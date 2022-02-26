@@ -1,3 +1,10 @@
+<?php
+require('./database/connection.php');
+require('./database/functions.php');
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

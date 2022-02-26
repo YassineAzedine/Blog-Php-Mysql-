@@ -2,6 +2,8 @@
 require('./includes/header.php');
 
 
+
+
 ?>
 
 <div class="container">
@@ -19,27 +21,44 @@ require('./includes/header.php');
       />
     </div>
     <div class="col-md-8">
+        
+        <?php 
 
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
+        $query = "SELECT * FROM articles";
+        $results = mysqli_query($con,$query);
+        while($article = $results->fetch_assoc()):
+        ?>
+        <?php
+                $categorie = getCategories($con,$article['category_id']);
+        
+        ?>
+        
+        <div class="card-body">
+          
+        <h5 class="card-title"> <?php echo $article['title']?>
+</h5>
         <p class="card-text">
-          This is a wider card with supporting text below as a natural lead-in to
-          additional content. This content is a little bit longer.
+        <?php echo $article['body']?>
+        </p>
+        <p class="card-text">
+        <?php echo $categorie['name']?>
         </p>
         <p class="card-text">
           <small class="text-muted">Last updated 3 mins ago</small>
         </p>
-      </div>
-      
+        
     </div>
-
-  </div>
+    <?php endwhile; ?>
+    
+</div>
+</div>
 
 </div>
 </div>
 <div class="col-4">
 
 <div class="mt-5">
+  
 <div class="card" style="width: 18rem;hight: ">
   <div class="card-header text-center text-primary">Categories</div>
   <hr>
