@@ -84,19 +84,9 @@
   <!-- Navbar -->
 
   <!-- Jumbotron -->
-  <div class="p-5 text-center bg-light">
-    <h1 class="mb-3">Heading</h1>
-    <h4 class="mb-3">Subheading</h4>
-    <a class="btn btn-primary" href="" role="button">Call to action</a>
-  </div>
+
   <!-- Jumbotron -->
 </header>
    <!-- end navbar -->
     
 <!-- MDB -->
-<script
-  type="text/javascript"
-  src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.js"
-></script>
-</body>
-</html>
