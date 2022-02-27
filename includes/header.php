@@ -70,8 +70,9 @@ require('./database/functions.php');
           >
         </li>
       </ul>
-      <form class="d-flex input-group w-auto">
+      <form class="d-flex input-group w-auto " method="post" action="searchPost.php" >
         <input
+        name="search"
           type="search"
           class="form-control"
           placeholder="Type query"
@@ -79,7 +80,8 @@ require('./database/functions.php');
         />
         <button
           class="btn btn-outline-primary"
-          type="button"
+          type="submit"
+
           data-mdb-ripple-color="dark"
         >
           Search
