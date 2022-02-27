@@ -21,9 +21,11 @@ require('./includes/header.php');
         
     <?php 
 
-$query = "SELECT * FROM articles";
+$id = mysqli_escape_string($con,$_GET['id']);
+$query = "SELECT * FROM articles WHERE category_id ='$id'";
 $results = mysqli_query($con,$query);
-while($article = $results->fetch_assoc()):
+$article = $results->fetch_assoc();
+    if($article !== null):
 ?>
 <?php
         $categorie = getCategories($con,$article['category_id']);
@@ -39,7 +41,6 @@ while($article = $results->fetch_assoc()):
         class="img-fluid rounded-start"
  
       />
-      <a href="viewPost.php?id=<?php echo $article['id']; ?>" class="btn btn-info">voir </a>
         </p>
  
         <h5 class="card-title"> <?php echo $article['title']?>
@@ -56,24 +57,34 @@ while($article = $results->fetch_assoc()):
           <small class="text-muted">Last updated 3 mins ago</small>
         </p>
  
-        
+ 
     </div>
     
-    <?php endwhile; ?>
+  
     
 </div>
 </div>
 
 </div>
 </div>
+<?php
+
+    else:
+      ?> 
+      <div class="alert">aucun artile trouvéé</div>
+<?php
+
+     endif;
+      ?>        
 <div class="col-4">
 
 <div class="mt-5">
+  
 <div class="card" style="width: 18rem;hight: ">
   <div class="card-header text-center text-primary">Categories</div>
   <hr>
   <?php require('./includes/sidbarCategory.php')   ?>
-<!-- //sidbar categories -->
+
 </div>
 <div class="mt-5">
          
@@ -82,9 +93,9 @@ while($article = $results->fetch_assoc()):
 
   <div class="card-header text-center text-primary ">Derniers Article</div>
   <hr>
- <!-- //sidebar dernier article -->
+  //
+    <!-- //sidebar dernier article -->
  <?php require('./includes/sidbarArticle.php')   ?>
-
 </div>
 
 </div>
