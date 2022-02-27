@@ -60,9 +60,7 @@ require('./database/functions.php');
      
      
         <li class="nav-item">
-          <a class="nav-link disabled"
-            >Inscription</a
-          >
+        <a class="nav-link active" aria-current="page" href="register.php">Inscription</a>
         </li>
         <li class="nav-item">
           <a class="nav-link disabled"
