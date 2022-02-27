@@ -63,19 +63,22 @@ $article = $results->fetch_assoc();
   
     
 </div>
-</div>
-
-</div>
-</div>
 <?php
 
     else:
       ?> 
-      <div class="alert">aucun artile trouvéé</div>
+      <div class="alert alert-success  ">aucune article trouvéé</div>
 <?php
 
      endif;
-      ?>        
+      ?> 
+</div>
+
+</div>
+</div>
+ 
+
+              
 <div class="col-4">
 
 <div class="mt-5">

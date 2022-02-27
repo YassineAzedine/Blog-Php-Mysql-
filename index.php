@@ -20,8 +20,12 @@ require('./includes/header.php');
     <div class="col-md-8">
         
     <?php 
+$start = 0;
+$limit = 3;
+$page = isset($_GET['page']) ? $_GET['page'] :1;
+$start = ($page*3)-3;
 
-$query = "SELECT * FROM articles";
+$query = "SELECT * FROM articles LIMIT $start,$limit";
 $results = mysqli_query($con,$query);
 while($article = $results->fetch_assoc()):
 ?>
@@ -60,7 +64,10 @@ while($article = $results->fetch_assoc()):
     </div>
     
     <?php endwhile; ?>
-    
+    <div class="col-md-4 mx-auto">
+<!-- //pagination -->
+<?php require('./includes/pagination.php')   ?>
+    </div>
 </div>
 </div>
 
