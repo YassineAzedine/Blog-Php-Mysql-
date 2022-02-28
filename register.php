@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
   $name = mysqli_escape_string($con,$_POST['name']);
   $email = mysqli_escape_string($con,$_POST['email']);
-  $password = mysqli_escape_string($con,$_POST['password']);
+  $password = mysqli_escape_string($con,sha1($_POST['password']));
   $created =date('Y-m-d H:s:m');
   if(empty($name)){
   $errors = "Veuillez remplire le champ nom ";
@@ -18,6 +18,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
   $errors = "Veuillez remplire le champ mot de passe ";
 
 
+  }else{
+    $query = "INSERT INTO users(name,email,password,created)VALUES('$name','$email','$password','$created')";
+    echo $query;
+    if(mysqli_query($con,$query)){
+
+      $message = " <div class='alert alert-success'>
+ compte créé avec succes
+      </div>";
+
+    }else{
+      $message = "
+      <div class='alert alert-danger'>
+    Une erreur ".mysqli_error($con)."
+      </div>
+      ";
+    }
   }
 
 }
@@ -37,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
            " ; }
            
            else{
-              $message;
+           echo  $message;
            }
            
             ?>
@@ -49,7 +65,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     <div class="col">
     
       <div class="form-outline">
-        <input type="text" id="form3Example1" class="form-control" name="name" />
+        <input type="text" id="form3Example1" class="form-control" name="name" 
+        value="<?php
+        if(isset($name)){
+          echo $name;
+        }
+        
+        
+        ?>"
+        
+        />
         <label class="form-label" for="form3Example1">First name</label>
       </div>
     </div>
@@ -58,13 +83,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
   <!-- Email input -->
   <div class="form-outline mb-4">
-    <input type="email" id="form3Example3" class="form-control" name="email" />
+    <input type="email" id="form3Example3" class="form-control" name="email"
+    value="<?php
+        if(isset($email)){
+          echo $email;
+        }
+        
+        
+        ?>"
+    
+    />
     <label class="form-label" for="form3Example3">Email address</label>
   </div>
 
   <!-- Password input -->
   <div class="form-outline mb-4">
-    <input type="password" id="form3Example4" class="form-control" name="password"  />
+    <input type="password" id="form3Example4" class="form-control" name="password"  
+    
+    value="<?php
+        if(isset($name)){
+          echo $name;
+        }
+        
+        
+        ?>"
+    />
     <label class="form-label" for="form3Example4">Password</label>
   </div>
 
