@@ -72,10 +72,41 @@ $article = $results->fetch_assoc();
 
      endif;
       ?> 
+
+      <hr>
+      <div id ="results"></div>
+  <form id="addComment" method="post"  >
+  <input type="hidden"  id="article_id" 
+    value="<?php echo $id?>">
+ <div class="form-group">
+   <input type="text" name="name" id="name" placeholder="Nom & presnom"
+    value="<?php
+         if(isset($_SESSION['name'])){
+           echo $_SESSION['name'];
+         }?>">
+ </div>
+ <div class="form-group">
+ <input type="email" name="email" id="email" placeholder="email"
+    value="<?php
+         if(isset($_SESSION['email'])){
+           echo $_SESSION['email'];
+         }?>">
+ </div>
+ <div class="form-group">
+   <textarea cols ="30" rows="5" placeholder="Commentaire" name="comment" >
+
+   </textarea>
+ </div>
+ <div class="form-group">
+   <button type="submit"> valider </button>
+ </div>
+  </form>
+
+      </div>
 </div>
 
 </div>
-</div>
+
  
 
               
