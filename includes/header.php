@@ -48,7 +48,8 @@ require('./database/functions.php');
     <a class="navbar-brand" href="#">mYbLOG</a>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
+        <?php if(isset($_SESSION['logged']) == true): ?>
+          <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
@@ -57,6 +58,17 @@ require('./database/functions.php');
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">About</a>
         </li>
+        <li class="nav-item">
+        <a class="nav-link active" aria-current="page" > welcome  <span class="text-primary"> <?php echo   $_SESSION['name'] ?> </span></a>
+         
+        </li>
+        <li class="nav-item">
+        <a class="nav-link active" href="logout.php" aria-current="page" >Déconnection</a>
+         
+        </li>
+        
+        <?php else:?>
+     
      
      
         <li class="nav-item">
@@ -66,10 +78,8 @@ require('./database/functions.php');
         <a class="nav-link active" aria-current="page" href="login.php">Connexion</a>
          
         </li>
-        <li class="nav-item">
-        <a class="nav-link active" aria-current="page" > welcome  <span class="text-primary"> <?php echo   $_SESSION['name'] ?> </span></a>
-         
-        </li>
+        <?php endif; ?>
+       
       </ul>
       <form class="d-flex input-group w-auto " method="post" action="searchPost.php" >
         <input
