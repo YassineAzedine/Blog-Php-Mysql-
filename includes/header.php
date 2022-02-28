@@ -63,9 +63,12 @@ require('./database/functions.php');
         <a class="nav-link active" aria-current="page" href="register.php">Inscription</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled"
-            >Connexion</a
-          >
+        <a class="nav-link active" aria-current="page" href="login.php">Connexion</a>
+         
+        </li>
+        <li class="nav-item">
+        <a class="nav-link active" aria-current="page" > welcome  <span class="text-primary"> <?php echo   $_SESSION['name'] ?> </span></a>
+         
         </li>
       </ul>
       <form class="d-flex input-group w-auto " method="post" action="searchPost.php" >

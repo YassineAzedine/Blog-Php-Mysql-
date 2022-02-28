@@ -5,13 +5,11 @@ $message = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
 
-  $name = mysqli_escape_string($con,$_POST['name']);
+ 
   $email = mysqli_escape_string($con,$_POST['email']);
   $password = mysqli_escape_string($con,($_POST['password']));
-  $created =date('Y-m-d H:s:m');
-  if(empty($name)){
-  $errors = "Veuillez remplire le champ nom ";
-  }else if(empty($email)){
+
+ if(empty($email)){
     $errors = "Veuillez remplire le champ email ";
 
   }else if(empty($password)){
@@ -19,22 +17,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
 
   }else{
-    $password= sha1($password);
-    $query = "INSERT INTO users(name,email,password,created)VALUES('$name','$email','$password','$created')";
- 
-    if(mysqli_query($con,$query)){
+      $password = sha1($password);
+    $query = "SELECT * FROM users WHERE email = '$email' AND password = '$password'";
 
-      $message = " <div class='alert alert-success'>
- compte créé avec succes
-      </div>";
+    if($data =mysqli_query($con,$query)){
+      
+          $user =$data->num_rows;
+          echo $user;
+          if($user>0){
+               $row = $data->fetch_assoc();
+               $_SESSION['logged'] = true;
+               $_SESSION['user_id'] = $row['id'];
+               $_SESSION['name'] = $row['name'];
+               $_SESSION['email'] = $row['email'];
+          header("location:index.php");
 
-    }else{
+
+        }else{
       $message = "
       <div class='alert alert-danger'>
-    Une erreur ".mysqli_error($con)."
+       mot de pass ou email est incorrect
       </div>
       ";
     }
+          }
+ 
   }
 
 }
@@ -58,29 +65,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
            }
            
             ?>
-      <h2 class="text-center">Register</h2>
-      <form action ="register.php" method="post">
+      <h2 class="text-center">Connexion</h2>
+      <form action ="login.php" method="post">
   <!-- 2 column grid layout with text inputs for the first and last names -->
-  <div class="row mb-4">
-      
-    <div class="col">
-    
-      <div class="form-outline">
-        <input type="text" id="form3Example1" class="form-control" name="name" 
-        value="<?php
-        if(isset($name)){
-          echo $name;
-        }
-        
-        
-        ?>"
-        
-        />
-        <label class="form-label" for="form3Example1">First name</label>
-      </div>
-    </div>
-  
-  </div>
+ 
 
   <!-- Email input -->
   <div class="form-outline mb-4">
@@ -114,7 +102,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
   </div> -->
 
   <!-- Submit button -->
-  <button type="submit" class="btn btn-primary btn-block mb-4">Sign up</button>
+  <button type="submit" class="btn btn-primary btn-block mb-4">Sign In</button>
 
   <!-- Register buttons -->
   <!-- <div class="text-center">
