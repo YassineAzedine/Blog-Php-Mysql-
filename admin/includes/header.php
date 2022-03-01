@@ -27,12 +27,14 @@ require('../database/functions.php');
   href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.css"
   rel="stylesheet"
 />
+<link rel="stylesheet" href="includes/css/style.css">
+<script src="includes/js/script.js"></script>
 </head>
 <body>
    <!-- navbar -->
    <header>
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light mb-2">
   <div class="container-fluid">
     <button
       class="navbar-toggler"
@@ -45,12 +47,12 @@ require('../database/functions.php');
     >
       <i class="fas fa-bars"></i>
     </button>
-    <a class="navbar-brand" href="#">mYbLOG</a>
+    <a class="navbar-brand mb-2" href="#">mYbLOG</a>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
           <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="index.php">VOIR LE SITE</a>
+          <a class="nav-link active" aria-current="page" href="../index.php">VOIR LE SITE</a>
         </li>
       
        
