@@ -1,6 +1,12 @@
 
 <?php require('./includes/header.php');?>
+<?php
 
+ $unpublished = "SELECT * FROM comments WHERE status = 0";
+if($result = mysqli_query($con,$unpublished)){
+     $unpublishedComments = $result->num_rows;
+
+}?>
 
 <!--Main Navigation-->
 <header>
@@ -46,7 +52,16 @@
         <a
            href="#"
            class="list-group-item list-group-item-action py-2 ripple"
-           ><i class="fas fa-chart-bar fa-fw me-3"></i><span>Commentaires</span></a
+           ><i class="fas fa-chart-bar fa-fw me-3"></i><span>Commentaires
+               
+
+
+<span class="badge badge-info">
+<?php echo $unpublishedComments?>
+</span>
+
+
+           </span></a
           >
      
         <a
