@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
           if($user>0){
                $row = $data->fetch_assoc();
                $_SESSION['admin'] = true;
-               $_SESSION['user_id'] = $row['id'];
+               $_SESSION['admin_id'] = $row['id'];
                $_SESSION['name'] = $row['name'];
                $_SESSION['email'] = $row['email'];
           header("location:dashboard.php");

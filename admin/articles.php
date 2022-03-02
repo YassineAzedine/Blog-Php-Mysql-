@@ -50,17 +50,17 @@
      <td> <?php echo $article['author']  ?> </td>
      <td><img class="" src="https://placekitten.com/50/50" alt =""> </td>
      <td> <?php echo $article['created']  ?> </td>
-     <td> <a href="#" >
+     <td> <a href="../viewPost.php?id=<?php echo $article['id']  ?>  " >
        <i> 
          <div class="fa fa-eye"></div>
        </i>
      </a> </td>
-     <td> <a href="#" >
+     <td> <a href="editPost.php?id=<?php echo $article['id']  ?> " >
        <i> 
          <div class="fa fa-edit"></div>
        </i>
      </a> </td>
-     <td> <a href="#" >
+     <td> <a href="../deletePost.php?id=<?php echo $article['id']  ?> " >
        <i> 
          <div class="fa fa-trash"></div>
        </i>
